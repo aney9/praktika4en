@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище praktikaModelContainer" CdmEntityContainer="praktikaEntities">
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="praktikaModel.Clients">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="ID_clients" ColumnName="ID_clients" />
+          <ScalarProperty Name="ClientSurname" ColumnName="ClientSurname" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="ClientMiddlename" ColumnName="ClientMiddlename" />
+          <ScalarProperty Name="FanId" ColumnName="FanId" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mesto">
+      <EntityTypeMapping TypeName="praktikaModel.Mesto">
+        <MappingFragment StoreEntitySet="Mesto">
+          <ScalarProperty Name="ID_mesto" ColumnName="ID_mesto" />
+          <ScalarProperty Name="Sektor" ColumnName="Sektor" />
+          <ScalarProperty Name="Ryad" ColumnName="Ryad" />
+          <ScalarProperty Name="Mesto1" ColumnName="Mesto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="praktikaModel.Orders">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="ID_orders" ColumnName="ID_orders" />
+          <ScalarProperty Name="DataPokupki" ColumnName="DataPokupki" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="clients_ID" ColumnName="clients_ID" />
+          <ScalarProperty Name="mesto_ID" ColumnName="mesto_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="praktikaModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище praktikaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="ID_clients" />
+    </Key>
+    <Property Name="ID_clients" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientSurname" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="ClientName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="ClientMiddlename" Type="varchar" MaxLength="20" />
+    <Property Name="FanId" Type="varchar" MaxLength="9" Nullable="false" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Mesto">
+    <Key>
+      <PropertyRef Name="ID_mesto" />
+    </Key>
+    <Property Name="ID_mesto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Sektor" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Ryad" Type="varchar" MaxLength="18" Nullable="false" />
+    <Property Name="Mesto" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="ID_orders" />
+    </Key>
+    <Property Name="ID_orders" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DataPokupki" Type="date" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="clients_ID" Type="int" Nullable="false" />
+    <Property Name="mesto_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__Orders__clients___5165187F">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="ID_clients" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="clients_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__mesto_ID__52593CB8">
+    <End Role="Mesto" Type="Self.Mesto" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mesto">
+        <PropertyRef Name="ID_mesto" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="mesto_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище praktikaModelContainer">
+    <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mesto" EntityType="Self.Mesto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Orders__clients___5165187F" Association="Self.FK__Orders__clients___5165187F">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__mesto_ID__52593CB8" Association="Self.FK__Orders__mesto_ID__52593CB8">
+      <End Role="Mesto" EntitySet="Mesto" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
