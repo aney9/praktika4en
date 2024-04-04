@@ -26,6 +26,6 @@ namespace praktika4en2
         public string Mesto1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orders> Orders { get; set; }
+        public virtual ICollection<Orders> Orders { private get; set; }
     }
 }
